@@ -1,0 +1,62 @@
+{
+  "name": "@xona-labs/xona",
+  "version": "1.0.0",
+  "description": "The Creative Resource Layer for the x402 Agent Economy. Non-custodial SDK for autonomous creative execution on Solana.",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xona-labs/xona.git"
+  },
+  "keywords": [
+    "solana",
+    "x402",
+    "ai-agents",
+    "agentic-web",
+    "micropayments",
+    "creative-ai",
+    "non-custodial",
+    "web3"
+  ],
+  "author": "xona-labs",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xona-labs/xona/issues"
+  },
+  "homepage": "https://github.com/xona-labs/xona#readme",
+  "dependencies": {
+    "@solana/web3.js": "^1.95.8",
+    "ajv": "^8.12.0",
+    "bs58": "^5.0.0",
+    "tweetnacl": "^1.0.3",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "typescript": "^5.5.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
