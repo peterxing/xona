@@ -35,9 +35,15 @@ export function getPublicKeyAddress(keypair: Keypair): string {
  * Sign a message with the keypair using ed25519
  */
 export function signMessage(keypair: Keypair, message: Uint8Array): Uint8Array {
-  // Use nacl for signing (ed25519)
-  // @solana/web3.js uses tweetnacl internally
-  const signature = nacl.sign.detached(message, keypair.secretKey.slice(0, 32));
+  // tweetnacl signs with the full 64-byte Ed25519 secret key
+  // (32-byte private seed + 32-byte public key), matching Solana Keypair.secretKey.
+  if (keypair.secretKey.length !== nacl.sign.secretKeyLength) {
+    throw new Error(
+      `Invalid Solana secret key length: expected ${nacl.sign.secretKeyLength} bytes, got ${keypair.secretKey.length}`
+    );
+  }
+
+  const signature = nacl.sign.detached(message, keypair.secretKey);
   return signature;
 }
 
